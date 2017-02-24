@@ -5,14 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 	public float speed;             //Floating point variable to store the player's movement speed.
-
+	private GameObject[] players;
 	private Rigidbody2D rb2d;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
+	private int activePlayer = 0;
 
 	// Use this for initialization
 	void Start()
 	{
-		//Get and store a reference to the Rigidbody2D component so that we can access it.
-		rb2d = GetComponent<Rigidbody2D> ();
+		players = GameObject.FindGameObjectsWithTag("AttackingPlayer");
+		rb2d = players[activePlayer].GetComponent<Rigidbody2D>();
 	}
 
 	//FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
@@ -32,9 +33,20 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.P))
 		{
-			Debug.Log(rb2d.position, gameObject);
+			
 			rb2d.MovePosition(new Vector2(1, 1));
 
+		}
+
+		if (Input.GetKeyDown(KeyCode.C))
+		{
+			if (activePlayer >= players.Length-1)
+				activePlayer = 0;
+			else 
+				activePlayer++;
+				
+			rb2d = players[activePlayer].GetComponent<Rigidbody2D>();
+			
 		}
 	}
 
@@ -42,7 +54,10 @@ public class PlayerController : MonoBehaviour {
 
 
 void Update()
-{ }
+	{ 
+	
+	
+	}
 		
 
 }
