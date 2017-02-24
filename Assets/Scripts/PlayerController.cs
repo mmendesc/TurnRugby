@@ -30,6 +30,19 @@ public class PlayerController : MonoBehaviour {
 		//Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
 		rb2d.MovePosition(rb2d.position + movement * Time.fixedDeltaTime * speed);
 
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			Debug.Log(rb2d.position, gameObject);
+			rb2d.MovePosition(new Vector2(1, 1));
+
+		}
 	}
+
+
+
+
+void Update()
+{ }
+		
 
 }
