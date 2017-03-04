@@ -8,28 +8,15 @@ public class PlayerController : MonoBehaviour {
 	private GameObject[] players;
 	private PlayerStats[] stats;
 	private Rigidbody2D rb2d;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
-	private int activePlayer = 8;
+	private int activePlayer = 0;
 
 
 	// Use this for initialization
 	void Start()
 	{
-		for (int i = 0; i < 14; i++)
-		{
-			if (GameObject.Find(string.Concat("Player", i)) != null)
-			{
-				players[i] = GameObject.Find(string.Concat("Player", i));
-				Debug.Log(players[i], gameObject);
+		players = GameObject.FindGameObjectsWithTag("AttackingPlayer");
 
-			}
-			else {
-				players[i] = new GameObject();
-				Debug.Log(players[i], gameObject);
-			}
-		}
-
-
-		rb2d = players[8].GetComponent<Rigidbody2D>();
+		rb2d = players[0].GetComponent<Rigidbody2D>();
 	}
 
 	//FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
