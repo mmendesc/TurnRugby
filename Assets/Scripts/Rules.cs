@@ -18,26 +18,25 @@ public class Rules : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		//Debug.Log(col.gameObject.transform.position.x);
+		
 		if (col.gameObject.tag == "AttackingPlayer") {
-			//Debug.Log(string.Concat(col.gameObject.name, " Is Offside"));
+			
 			position_before = col.gameObject.transform.position.x;
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D col) { 
-		//Debug.Log(col.gameObject.transform.position.x);
+
 		if (col.gameObject.tag == "AttackingPlayer")
 		{
 			position_after = col.gameObject.transform.position.x;
 
-			//Debug.Log(string.Concat(position_after, " valor depois"));
-			//Debug.Log(string.Concat(position_before, " valor antes"));
+
 			if (position_after > position_before)	{
-				Debug.Log(string.Concat(col.gameObject.name, " Is still Offside"));
+				//Debug.Log(string.Concat(col.gameObject.name, " Is still Offside"));
 			}
 			else { 
-				Debug.Log(string.Concat(col.gameObject.name, " Is Onside Again"));
+				//Debug.Log(string.Concat(col.gameObject.name, " Is Onside Again"));
 			}
 
 		}
@@ -45,8 +44,7 @@ public class Rules : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D col){
 		if (col.gameObject.tag == "AttackingPlayer") { 
-			//Debug.Log(string.Concat(col.gameObject.name, " Is Offside"));
-			//Debug.Log(string.Concat(position_before, " valor antes"));
+			
 		}
 
 	}
